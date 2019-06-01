@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="recipes_screen_margin">5dp</dimen>
+
+    <dimen name="card_view_margin">5dp</dimen>
+    <dimen name="card_view_padding">32dp</dimen>
+    <dimen name="card_view_corner_radius">5dp</dimen>
+    <dimen name="card_view_elevation">3dp</dimen>
+
+    <dimen name="label_left_margin">20dp</dimen>
+    <dimen name="guideline_margin">35dp</dimen>
+
+    <dimen name="details_screen_padding">8dp</dimen>
+    <dimen name="ingredients_label_bottom_margin">8dp</dimen>
+    <dimen name="ingredients_padding">4dp</dimen>
+    <dimen name="ingredient_shape_radius">5dp</dimen>
+    <dimen name="ingredient_circle_padding">10dp</dimen>
+
+    <dimen name="steps_label_bottom_margin">5dp</dimen>
+    <dimen name="steps_label_top_margin">24dp</dimen>
+    <dimen name="step_background_radius">10dp</dimen>
+    <dimen name="step_background_stroke_width">0.5dp</dimen>
+    <dimen name="step_padding">16dp</dimen>
+    <dimen name="step_margin_vertical">4dp</dimen>
+    <dimen name="step_margin_horizontal">8dp</dimen>
+
+    <dimen name="media_padding">8dp</dimen>
+    <dimen name="description_margin">24dp</dimen>
+
+    <dimen name="button_bottom_margin">24dp</dimen>
+    <dimen name="button_padding">20dp</dimen>
+    <dimen name="button_padding_small">10dp</dimen>
+    <dimen name="widget_button_margin_right">10dp</dimen>
+
+    <dimen name="progress_bar_size">42dp</dimen>
+
+    <dimen name="widget_margin">6dp</dimen>
+    <dimen name="widget_padding">4dp</dimen>
+
+</resources>

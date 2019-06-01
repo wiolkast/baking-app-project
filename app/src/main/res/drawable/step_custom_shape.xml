@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@color/colorStepBackground"/>
+
+    <stroke android:width="@dimen/step_background_stroke_width"
+        android:color="@color/colorPrimary"/>
+
+    <corners
+        android:radius="@dimen/step_background_radius"/>
+</shape>

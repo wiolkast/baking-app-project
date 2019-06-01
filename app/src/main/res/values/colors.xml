@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryLight">#46B1A5</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorStepBackground">#0C009688</color>
+    <color name="playerBackground">#CC000000</color>
+
+    <color name="colorWidgetLabelBackground">#CC00574B</color>
+    <color name="colorWidgetListBackground">#CC46B1A5</color>
+</resources>

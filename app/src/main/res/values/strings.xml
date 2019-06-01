@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Baking App</string>
+    <string name="ingredients_list_label">Ingredients:</string>
+    <string name="steps_list_label">Steps:</string>
+    <string name="button_previous_label">Previous step</string>
+    <string name="button_next_label">Next step</string>
+    <string name="button_add_ingredients_to_widget">Add to\nwidget</string>
+    <string name="empty_ingredient_list">List of ingredients is empty.</string>
+    <string name="error_message">Failed to get results,\ncheck internet connection\nor try again later.</string>
+</resources>
