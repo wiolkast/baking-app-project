@@ -50,9 +50,13 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
     private static final String VIDEO_URL = "video_url";
     private static final String IMAGE_URL = "image_url";
     private static final String STEP_DESCRIPTION = "step_description";
+    private static final String PLAYER_POSITION = "player_position";
+    private static final String PLAY_WHEN_READY = "play_when_ready";
     private String videoUrl;
     private String imageUrl;
     private String stepDescription;
+    private Long playerPosition = 0L;
+    private boolean playWhenReady = true;
 
     public StepDetailFragment() {
     }
@@ -65,6 +69,8 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
             videoUrl = savedInstanceState.getString(VIDEO_URL);
             imageUrl = savedInstanceState.getString(IMAGE_URL);
             stepDescription = savedInstanceState.getString(STEP_DESCRIPTION);
+            playerPosition = savedInstanceState.getLong(PLAYER_POSITION, 0);
+            playWhenReady = savedInstanceState.getBoolean(PLAY_WHEN_READY, true);
         }
 
         ButterKnife.bind(this, rootView);
@@ -81,9 +87,41 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        if (Util.SDK_INT > 23) {
+            initializePlayer(Uri.parse(videoUrl));
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if ((Util.SDK_INT <= 23 || exoPlayer == null)) {
+            initializePlayer(Uri.parse(videoUrl));
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         releasePlayer();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (Util.SDK_INT <= 23) {
+            releasePlayer();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (Util.SDK_INT > 23) {
+            releasePlayer();
+        }
     }
 
     private void setFullscreenMode(){
@@ -114,13 +152,16 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
         MediaSource mediaSource = new ExtractorMediaSource
                 .Factory(new DefaultHttpDataSourceFactory(userAgent)).createMediaSource(mediaUri);
         exoPlayer.prepare(mediaSource, true, true);
-        exoPlayer.setPlayWhenReady(true);
+        exoPlayer.setPlayWhenReady(playWhenReady);
+        exoPlayer.seekTo(playerPosition);
     }
 
     private void releasePlayer() {
-        exoPlayer.stop();
-        exoPlayer.release();
-        exoPlayer = null;
+        if(exoPlayer != null){
+            exoPlayer.stop();
+            exoPlayer.release();
+            exoPlayer = null;
+        }
     }
 
     public void updateData(String videoUrl, String imageUrl, String stepDescription) {
@@ -134,6 +175,8 @@ public class StepDetailFragment extends Fragment implements Player.EventListener
         outState.putString(VIDEO_URL, videoUrl);
         outState.putString(IMAGE_URL, imageUrl);
         outState.putString(STEP_DESCRIPTION, stepDescription);
+        outState.putLong(PLAYER_POSITION, exoPlayer.getCurrentPosition());
+        outState.putBoolean(PLAY_WHEN_READY, exoPlayer.getPlayWhenReady());
     }
 
     @Override
